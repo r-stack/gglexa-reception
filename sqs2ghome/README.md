@@ -40,11 +40,9 @@ pi / raspberry
   > sudo apt-get install -y git-core libnss-mdns libavahi-compat-libdnssd-dev  
 
 
-* プロジェクトの作成  
-  > mkdir XXX  
-  > cd XXX  
-  > npm init  
-  > npm install google-home-notifier aws-sdk --save
+* `sqs2ghome`を`~/`などに配置して依存物をインストールする。
+  > cd sqs2ghome
+  > npm install
 
 * MNDSのソース修正(ラズパイ用バグ対策)  
   > vi node_modules/mdns/lib/browser.js
@@ -69,4 +67,5 @@ Browser.defaultResolverSequence = [
     
   > SQS:ReceiveMessage と SQS:DeleteMessage の権限が必要
 
-* ディレクトリにソースをコピーして実行する。
+* 実行する。  
+  > node main.js
