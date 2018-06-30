@@ -44,7 +44,7 @@ pi / raspberry
   > cd sqs2ghome  
   > npm install
 
-* MNDSのソース修正(ラズパイ用バグ対策)  
+* mDNSのソース修正(ラズパイ用バグ対策)  
   > vi node_modules/mdns/lib/browser.js
 
 ```
