@@ -41,7 +41,7 @@ pi / raspberry
 
 
 * `sqs2ghome`を`~/`などに配置して依存物をインストールする。
-  > cd sqs2ghome
+  > cd sqs2ghome  
   > npm install
 
 * MNDSのソース修正(ラズパイ用バグ対策)  
