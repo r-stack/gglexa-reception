@@ -1,14 +1,13 @@
 import datetime
 import json
 import logging
-from django.contrib.auth.models import User
+
 from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
-
-from .models import Token
+from .models import Token, User
 
 L = logging.getLogger(__name__)
 
@@ -42,8 +41,8 @@ def index(request):
 
     search = data.get('search')
     user = User.objects.filter(
-        Q(attr__receipt_no=search) | Q(username=search)
-        | Q(attr__phonetic=search)).first()
+        Q(receipt_no=search) | Q(username=search)
+        | Q(phonetic=search)).first()
 
 
 
@@ -54,10 +53,10 @@ def index(request):
     if user:
         userdict = {
             "username": user.username,
-            "receipt_no": user.attr.receipt_no,
-            "phonetic": user.attr.phonetic,
-            "org_name": user.attr.org_name,
-            "team": user.attr.team.name if user.attr.team else None
+            "receipt_no": user.receipt_no,
+            "phonetic": user.phonetic,
+            "org_name": user.org_name,
+            "team": user.team.name if user.team else None
         }
         result['user'] = userdict
 
