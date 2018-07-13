@@ -4,6 +4,7 @@ from django.db import models
 
 class User(AbstractUser):
     receipt_no = models.CharField(max_length=20)
+    check_in = models.DateTimeField(null=True,blank=True)
     phonetic = models.CharField(max_length=30, blank=True)
     org_name = models.CharField(max_length=50, blank=True)
     team = models.ForeignKey(

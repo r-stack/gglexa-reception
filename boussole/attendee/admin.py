@@ -9,15 +9,17 @@ from .models import User, Token, Team
 class CustomUserAdmin(UserAdmin):
 
     fieldsets = (
-        (None, {'fields': ('username', 'password')}),
+        (None, {'fields': ('username', 'password', 'token')}),
         (_('Personal info'), {'fields': (
-            'last_name', 'first_name', 'email', 'phonetic', 'receipt_no', 'org_name', 'team')}),
+            'last_name', 'first_name', 'email', 'phonetic', 'receipt_no', 'org_name', 'team', 'check_in')}),
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser',
                                        'groups', 'user_permissions')}),
         (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
     )
-    list_display = ('username', 'email', 'get_full_name',
-                    'phonetic', 'team', 'is_staff')
+    readonly_fields = ('token',)
+    list_display = ('username', 'receipt_no', 'email', 'get_full_name',
+                    'phonetic', 'team', 'check_in', 'is_staff')
+    list_filter = ('is_staff', 'is_superuser', 'is_active', 'groups', 'team')
     search_fields = ('username', 'full_name', 'email', 'org_name')
     filter_horizontal = ('groups', 'user_permissions')
 
