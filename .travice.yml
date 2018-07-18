@@ -1,0 +1,20 @@
+language: python
+python:
+  - "3.6"
+  
+
+install:
+  - cd boussole
+  - pip install -r requirements.txt
+  - python manage.py collectstatic --noinput
+before_deploy: "cd ./boussole"
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: "$AWS_ACCESS_KEY"
+  secret_access_key: "$AWS_SECRET_KEY"
+  region: "$AWS_REGION"  
+  app: "$EB_APPNAME"
+  env: "$EB_ENVNAME"
+  bucket_name: "$EB_BUCKET"
+  on:
+    branch: master
