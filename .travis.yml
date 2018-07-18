@@ -6,8 +6,10 @@ python:
 install:
   - cd boussole
   - pip install -r requirements.txt
+  - echo `pwd`
   
 before_deploy:
+  - echo `pwd`
   - cd boussole
   - python manage.py collectstatic --noinput
 
