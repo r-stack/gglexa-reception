@@ -86,7 +86,15 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
+if os.getenv('RDS_HOSTNAME'):
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.getenv('RDS_DB_NAME', 'ebdb'), # DB名を設定
+        'USER': os.getenv('RDS_USERNAME','root'), # DBへ接続するユーザIDを設定
+        'PASSWORD': os.getenv('RDS_PASSWORD',''), # DBへ接続するユーザIDのパスワードを設定
+        'HOST': os.getenv('RDS_HOSTNAME', 'localhost'),
+        'PORT': os.getenv('RDS_PORT', '3389'),
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
