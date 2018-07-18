@@ -18,4 +18,6 @@ deploy:
   app: "$EB_APPNAME"
   env: "$EB_ENVNAME"
   bucket_name: "$EB_BUCKET"
+  on:
+    branch: master
 
