@@ -28,7 +28,8 @@ if os.getenv("PRODUCTION", False):
     DEBUG = False
 
 ALLOWED_HOSTS = []
-
+if os.getenv("ALLOWED_HOSTS"):
+    ALLOWED_HOSTS += os.getenv("ALLOWED_HOSTS")
 
 # Application definition
 
