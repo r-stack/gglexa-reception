@@ -1,15 +1,15 @@
 language: python
+cache: pip
 python:
   - "3.6"
   
-
-install:
+before_deploy:
   - cd boussole
   - pip install -r requirements.txt
   - python manage.py collectstatic --noinput
-before_deploy: "cd ./boussole"
 deploy:
   provider: elasticbeanstalk
+  skip_cleanup: true
   access_key_id: "$AWS_ACCESS_KEY"
   secret_access_key: "$AWS_SECRET_KEY"
   region: "$AWS_REGION"  
