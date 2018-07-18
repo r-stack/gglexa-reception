@@ -1,12 +1,16 @@
 language: python
-
+cache: pip
 python:
   - "3.6"
+
+install:
+  - cd boussole
+  - pip install -r requirements.txt
   
 before_deploy:
   - cd boussole
-  - pip install -r requirements.txt
   - python manage.py collectstatic --noinput
+
 deploy:
   provider: elasticbeanstalk
   skip_cleanup: true
