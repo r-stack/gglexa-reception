@@ -8,8 +8,6 @@ install:
   - echo `pwd`
 script: "echo 'no test'"
 before_deploy:
-  - echo `pwd`
-  - cd boussole
   - python manage.py collectstatic --noinput
 deploy:
   provider: elasticbeanstalk
