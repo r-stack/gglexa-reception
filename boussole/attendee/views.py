@@ -52,6 +52,7 @@ def _parse_body(request):
     data = None
     try:
         if bodystr:
+            L.warn(bodystr)
             data = json.loads(bodystr)
     except:
         L.warn(body)
