@@ -53,7 +53,8 @@ def _parse_body(request):
     try:
         if bodystr:
             data = json.loads(bodystr)
-            L.info(data)
+            L.warn("----input-----")
+            L.warn(data)
     except:
         L.warn(body)
         raise APIException(403, "body is not JSON")
@@ -69,7 +70,8 @@ def api(func):
             _parse_body(request)
             res = func(request)
             if not isinstance(res, HttpResponse):
-                L.info(res)
+                L.warn("----response-----")
+                L.warn(res)
                 result_j = json.dumps(res)
                 res = HttpResponse(result_j, content_type='application/json')
             return res
