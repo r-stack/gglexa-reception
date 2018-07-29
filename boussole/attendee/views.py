@@ -111,6 +111,8 @@ def lookup_user(request):
     data = request.data
     router = request.router
     query = search('queryResult.parameters.id', data)
+    if type(query) == float:
+        query = str(int(query))
     user = User.objects.filter(
         Q(receipt_no=query) | Q(username=query)
         | Q(phonetic=query)).first()
