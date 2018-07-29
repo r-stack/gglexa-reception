@@ -130,6 +130,8 @@ def lookup_user(request):
             "team": user.team.name if user.team else None
         }
         result.update(userdict)
+    else:
+        L.warn("no user lookuped. query=%s", query)
 
     payload = {"followupEventInput": {
         "name": router.get('followupEvent'),
