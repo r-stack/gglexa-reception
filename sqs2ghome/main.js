@@ -15,7 +15,7 @@ const googlehome = require('google-home-notifier')
 
 // AWS settings
 const AWS_REGION = 'ap-northeast-1';
-const SQS_URL = 'https://sqs.ap-northeast-1.amazonaws.com/626062478346/sample-queue';
+const SQS_URL = 'https://sqs.ap-northeast-1.amazonaws.com/981111930280/hackaday2018-gglexa-trigger';
 const QUEUE_CHECK_INTVL_SEC = 1
 // Google Home settings
 const msg_tts = 'アレクサ、お客様がご来場でございます。';
