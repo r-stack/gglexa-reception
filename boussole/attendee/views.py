@@ -157,9 +157,16 @@ def check_in(request):
     user.check_in = timezone.now()
     user.save()
 
-    result = {
-        'check_in': user.check_in.isoformat() if user.check_in else None
+    userdict = {
+        "username": user.username,
+        "receipt_no": user.receipt_no,
+        "phonetic": user.phonetic,
+        "org_name": user.org_name,
+        'check_in': user.check_in.isoformat() if user.check_in else None,
+        "team": user.team.name if user.team else None
     }
+    result = {}
+    result.update(userdict)
     payload = {"followupEventInput": {
         "name": router.get('followupEvent'),
         "languageCode": "ja",
