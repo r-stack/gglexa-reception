@@ -19,6 +19,14 @@ INTENT_ROUTER = {
         'function': 'lookup_user',
         'followupEvent': 'StartHackResponse'
     },
+    'CheckName_NO':{
+        'function': 'lookup_user',
+        'followupEvent': 'StartHackResponse'
+    },
+    'CheckID_False':{
+        'function': 'lookup_user',
+        'followupEvent': 'StartHackResponse'
+    },
     'CheckName_YES':{
         'function': 'check_in',
         'followupEvent': 'CheckName_YES_Response'
@@ -120,6 +128,7 @@ def lookup_user(request):
     result = {}
     result['query'] = query
     result['timestamp'] = timezone.now().isoformat()
+    event = 'StartHackNoReponse' 
     if user:
         userdict = {
             "username": user.username,
@@ -130,11 +139,15 @@ def lookup_user(request):
             "team": user.team.name if user.team else None
         }
         result.update(userdict)
+        event = router.get('followupEvent')
     else:
         L.warn("no user lookuped. query=%s", query)
+        event = 'StartHackNoResponse'
+
+        
 
     payload = {"followupEventInput": {
-        "name": router.get('followupEvent'),
+        "name": event,
         "languageCode": "ja",
         "parameters": result
     }}
