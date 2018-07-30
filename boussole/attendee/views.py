@@ -19,7 +19,7 @@ INTENT_ROUTER = {
         'function': 'lookup_user',
         'followupEvent': 'StartHackResponse'
     },
-    'CheckName_NO':{
+    'CheckName_No':{
         'function': 'lookup_user',
         'followupEvent': 'StartHackResponse'
     },
